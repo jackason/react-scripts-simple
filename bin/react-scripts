@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+const path = require("path")
+const { execSync } = require('child_process')
+
+/**
+ * 可执行的命令
+ * start 启动项目
+ * build 打包
+ */
+const commands = ["start", "build"]
+
+const args = process.argv.slice(2);
+const scriptIndex = args.findIndex(x => commands.includes(x));
+const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
+
+/**执行命令方法 */
+function executeCommand(cmd) {
+    let command = `node ${cmd}.js`
+    execSync(command, { cwd: `${path.join(__dirname, `../scripts`)}`, stdio: 'inherit' })
+}
+
+executeCommand(script)
