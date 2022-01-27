@@ -92,7 +92,13 @@ module.exports = function (webpackEnv) {
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)$/i,
-                    use: ["file-loader"],
+                    use: [{
+                        loader: "file-loader",
+                        options: {
+                            name: "[name]_[hash:5].[ext]",
+                            outputPath: "static/"
+                        }
+                    }],
                 },
             ]
         },

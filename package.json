@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-simple",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Configuration and scripts for Create React App",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/jackason/react-scripts-simple/issues"
   },
-  "main": "index.js",
+  "types": "./lib/app.d.ts",
   "bin": {
     "react-scripts": "bin/react-scripts"
   },
