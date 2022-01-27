@@ -1,5 +1,5 @@
 {
-  "name": "xiaohai-test-react-scripts",
+  "name": "simple-react-scripts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack serve --config config/webpack.config.js --mode development",
-    "build": "webpack",
+    "build": "webpack --config config/webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

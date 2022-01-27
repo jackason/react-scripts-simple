@@ -107,7 +107,9 @@ module.exports = function (webpackEnv) {
             new CleanWebpackPlugin(),
             new friendlyErrorsWebpackPlugin({
                 compilationSuccessInfo: {
-                    messages: [`Your application is running here: http://localhost:${env_obj && env_obj.PORT ? env_obj.PORT : 3000}`]
+                    messages: !devMode
+                        ? [`Your application is running here: http://localhost:${env_obj && env_obj.PORT ? env_obj.PORT : 3000}`]
+                        : ['Your build success']
                 }
             }),
             new MiniCss({
