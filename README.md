@@ -1,21 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+这是基于 `webpack` 的一个简易的 `react-scripts` 用于打包构建 `react` 项目  
+This is a simple `react-scripts` based on `webpack`, which is used to package and build `react` projects
 
-## Available Scripts
+更新内容：  
+&emsp;&emsp;v1.0.x 暂时不支持 css module 也就是 `xxx.module.xxx`暂不支持
 
-In the project directory, you can run:
+update content:  
+&emsp;&emsp;v1.0.x does not support CSS module temporarily, that is `xxx.module.xxx` is not supported temporarily
+# 安装 (install)
 
-### `yarn start`
+```
+npm install react-scripts-simple -D
+yarn add react-scripts-simple
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 使用 (use)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+在 `package.json` 的 `scripts` 下配置
 
-### `yarn build`
+```
+{
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build"
+    }
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 代理 (proxy)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+在项目根目录新建 `proxy.config.js` 文件设置代理内容
+
+```
+module.exports = {
+    '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+    }
+}
+```
+
+# 其他 (order)
+
+您还可以在在项目根目录新建 `.env` 文件来配置端口 `PORT`
+
+```
+PORT=3010
+```

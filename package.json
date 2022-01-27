@@ -1,6 +1,6 @@
 {
-  "name": "simple-react-scripts",
-  "version": "1.0.0",
+  "name": "react-scripts-simple",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
