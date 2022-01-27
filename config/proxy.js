@@ -1,4 +1,4 @@
-const { proxy } = require('./path')
+const { proxy } = require('./paths')
 
 module.exports = function serverProxy() {
     try {
