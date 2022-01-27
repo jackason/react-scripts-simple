@@ -1,14 +1,24 @@
 {
   "name": "react-scripts-simple",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.3",
+  "description": "Configuration and scripts for Create React App",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackason/react-scripts-simple.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/jackason/react-scripts-simple/issues"
+  },
   "main": "index.js",
   "bin": {
     "react-scripts": "bin/react-scripts"
   },
   "scripts": {
-    "start": "webpack serve --config config/webpack.config.js --mode development",
-    "build": "webpack --config config/webpack.config.js --mode production",
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.config.js --mode development",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +30,7 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
     "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",

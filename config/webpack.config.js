@@ -9,10 +9,10 @@ const serverProxy = require("./proxy")
 const { env_obj, envStringified } = require('./env')
 
 module.exports = function (webpackEnv) {
-    const devMode = webpackEnv !== 'production'
+    const devMode = webpackEnv.WEBPACK_SERVE
 
     return {
-        mode: webpackEnv,
+        mode: devMode ? "development" : "production",
         entry,
         output: {
             path: output,
@@ -76,7 +76,7 @@ module.exports = function (webpackEnv) {
                 {
                     test: /\.css$/i,
                     use: [
-                        !devMode ? "style-loader" : MiniCss.loader,
+                        devMode ? "style-loader" : MiniCss.loader,
                         "css-loader",
                         "postcss-loader"
                     ]
@@ -84,7 +84,7 @@ module.exports = function (webpackEnv) {
                 {
                     test: /\.less$/i,
                     use: [
-                        !devMode ? "style-loader" : MiniCss.loader,
+                        devMode ? "style-loader" : MiniCss.loader,
                         "css-loader",
                         "postcss-loader",
                         "less-loader"
@@ -107,7 +107,7 @@ module.exports = function (webpackEnv) {
             new CleanWebpackPlugin(),
             new friendlyErrorsWebpackPlugin({
                 compilationSuccessInfo: {
-                    messages: !devMode
+                    messages: devMode
                         ? [`Your application is running here: http://localhost:${env_obj && env_obj.PORT ? env_obj.PORT : 3000}`]
                         : ['Your build success']
                 }
