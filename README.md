@@ -2,16 +2,25 @@
 This is a simple `react-scripts` based on `webpack`, which is used to package and build `react` projects
 
 更新内容：  
-&emsp;&emsp;v1.0.5 支持 css module 也就是
+&emsp;&emsp;v1.0.5 支持 css module  
+&emsp;&emsp;v1.0.6 支持可以通过官方 create-react-app 生成
 
 update content:  
-&emsp;&emsp;v1.0.5 support CSS module, that is
+&emsp;&emsp;v1.0.5 support CSS module  
+&emsp;&emsp;v1.0.5 support can be generated through the official create react app
 
 # 安装 (install)
 
 ```
 npm install react-scripts-simple -D
 yarn add react-scripts-simple
+```
+
+或者通过官方渠道安装
+
+```
+npx create-react-app holle-app --scripts-version react-scripts-simple
+yarn create react-app holle-app --scripts-version react-scripts-simple
 ```
 
 # 使用 (use)
