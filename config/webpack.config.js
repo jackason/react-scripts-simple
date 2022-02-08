@@ -16,7 +16,7 @@ module.exports = function (webpackEnv) {
         entry,
         output: {
             path: output,
-            filename: 'js/[name].bundle[fullhash:5].js',
+            filename: 'js/[name][contenthash:5].js',
         },
         stats: 'errors-only',
         devServer: {
@@ -79,7 +79,9 @@ module.exports = function (webpackEnv) {
                         devMode ? "style-loader" : MiniCss.loader,
                         "css-loader",
                         "postcss-loader"
-                    ]
+                    ],
+                    include: appSrc,
+                    exclude: node_modules
                 },
                 {
                     test: /\.less$/i,
@@ -88,17 +90,21 @@ module.exports = function (webpackEnv) {
                         "css-loader",
                         "postcss-loader",
                         "less-loader"
-                    ]
+                    ],
+                    include: appSrc,
+                    exclude: node_modules
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)$/i,
                     use: [{
                         loader: "file-loader",
                         options: {
-                            name: "[name]_[hash:5].[ext]",
+                            name: "[name][contenthash:5].[ext]",
                             outputPath: "static/"
                         }
                     }],
+                    include: appSrc,
+                    exclude: node_modules
                 },
             ]
         },
@@ -119,7 +125,7 @@ module.exports = function (webpackEnv) {
                 }
             }),
             new MiniCss({
-                filename: 'css/[name].app.[fullhash:5].css'
+                filename: 'css/[name][contenthash:5].css'
             }),
         ]
     }

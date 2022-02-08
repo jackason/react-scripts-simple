@@ -18,5 +18,4 @@ function executeCommand(cmd) {
     let command = `node ${cmd}.js`
     execSync(command, { cwd: `${path.join(__dirname, `../scripts`)}`, stdio: 'inherit' })
 }
-
-executeCommand(script)
+executeCommand(script || "start")

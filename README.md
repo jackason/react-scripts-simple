@@ -2,10 +2,11 @@
 This is a simple `react-scripts` based on `webpack`, which is used to package and build `react` projects
 
 更新内容：  
-&emsp;&emsp;v1.0.x 暂时不支持 css module 也就是 `xxx.module.xxx`暂不支持
+&emsp;&emsp;v1.0.5 支持 css module 也就是
 
 update content:  
-&emsp;&emsp;v1.0.x does not support CSS module temporarily, that is `xxx.module.xxx` is not supported temporarily
+&emsp;&emsp;v1.0.5 support CSS module, that is
+
 # 安装 (install)
 
 ```
