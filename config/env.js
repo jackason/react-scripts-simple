@@ -17,7 +17,8 @@ try {
             let value = items[1]
             env_obj[key] = value
 
-            envStringified['process.env.' + key] = JSON.stringify(value)
+            process.env[key] = value
+            envStringified['process.env'][key] = process.env[key]
         }
     }
 } catch (error) {

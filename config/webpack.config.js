@@ -24,7 +24,7 @@ module.exports = function (webpackEnv) {
             host: env_obj.host || 'localhost',
             client: {
                 webSocketTransport: 'ws',
-                logging: 'error',
+                logging: 'error'
             },
             webSocketServer: 'ws',
             hot: true,
@@ -108,6 +108,7 @@ module.exports = function (webpackEnv) {
                 },
             ]
         },
+        devtool: "source-map",
         plugins: [
             new HtmlWebpackPlugin({
                 template,
