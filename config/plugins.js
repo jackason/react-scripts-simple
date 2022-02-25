@@ -17,7 +17,6 @@ function htmlWebpack(appName) {
         )
     );
 
-
     // 设置构建时间以及html的title
     const templateContent = content({
         title: appName,
