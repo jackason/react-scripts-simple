@@ -131,6 +131,7 @@ module.exports = function (
 
     // 模板生成后自动下载包
     const cmdInstall = useYarn ? 'yarn' : 'npm i'
+    execSync(cmdInstall, { cwd: appPath, stdio: 'inherit' })
     // 安装所需要的依赖
     const cmdAdd = useYarn ? 'yarn add' : 'npm i -D'
     execSync(`${cmdAdd} ${relyons.join(' ')}`, { cwd: appPath, stdio: 'inherit' })
