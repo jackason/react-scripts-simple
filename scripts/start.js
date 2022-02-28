@@ -13,12 +13,13 @@ const PORT = process.env.PORT || 3000;
 const HOST = process.env.host || 'localhost';
 const HTTPS = process.env.HTTPS || false;
 const proxy = serverProxy()
+const appName = process.env.npm_package_name
 
 console.log()
 console.log(proxy)
 console.log()
 
-const compiler = webpack(webpackConfig({ WEBPACK_SERVE: true, appName: "simple" }));
+const compiler = webpack(webpackConfig({ WEBPACK_SERVE: true, appName }));
 const serverConfig = {
     static: { directory: output },
     port: PORT,

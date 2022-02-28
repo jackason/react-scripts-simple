@@ -1,15 +1,17 @@
-const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCss = require("mini-css-extract-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { entry, output, appSrc, node_modules } = require("./paths");
-const { envStringified } = require("./env");
-const { htmlWebpack, friendlyErrorsWebpack } = require('./plugins')
+const plugins = require("./plugins");
 
 module.exports = function (webpackEnv) {
   const devMode = webpackEnv.WEBPACK_SERVE;
 
+  const mode = devMode ? "development" : "production";
+  const target = devMode ? "web" : "browserslist";
+  const devtool = process.env.SOURCE_MAP ? "source-map" : "eval-source-map";
+
   return {
-    mode: devMode ? "development" : "production",
+    mode,
     entry,
     output: {
       path: output,
@@ -19,6 +21,7 @@ module.exports = function (webpackEnv) {
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
     },
+    target,
     module: {
       rules: [
         {
@@ -94,13 +97,17 @@ module.exports = function (webpackEnv) {
         },
       ],
     },
-    devtool: "source-map",
-    plugins: [
-      new webpack.DefinePlugin(envStringified),
-      new CleanWebpackPlugin(),
-      new MiniCss({ filename: "css/[name][contenthash:5].css" }),
-      htmlWebpack(webpackEnv.appName),
-      friendlyErrorsWebpack(devMode),
-    ],
+    optimization: {
+      minimize: true,
+      minimizer: [
+        // 配置生产环境的压缩方案：js和css
+        new TerserWebpackPlugin({
+          // 开启多进程打包
+          parallel: true,
+        }),
+      ],
+    },
+    devtool,
+    plugins: plugins(webpackEnv),
   };
 };
