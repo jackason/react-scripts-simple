@@ -11,6 +11,7 @@ const path = require("path");
 const fs = require("fs");
 const ejs = require("ejs"); //ejs模版引擎
 
+
 // 使用ejs生成html模板
 function htmlWebpack(title) {
     // 读取模板
@@ -49,8 +50,6 @@ function friendlyErrorsWebpack(DEV) {
         },
     });
 }
-
-
 
 module.exports = function (webpackEnv) {
 
