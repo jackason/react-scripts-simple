@@ -16,6 +16,8 @@ const proxy = serverProxy()
 const appName = process.env.npm_package_name
 
 console.log()
+
+console.log()
 console.log(proxy)
 console.log()
 
@@ -38,3 +40,10 @@ const serverConfig = {
 
 const server = new webpackDevServer(serverConfig, compiler)
 server.start();
+
+
+process.stdin.on('end', function () {
+    console.log(12)
+    // devServer.close();
+    // process.exit();
+});

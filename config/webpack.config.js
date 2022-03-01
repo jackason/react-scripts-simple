@@ -8,7 +8,7 @@ module.exports = function (webpackEnv) {
 
   const mode = devMode ? "development" : "production";
   const target = devMode ? "web" : "browserslist";
-  const devtool = process.env.SOURCE_MAP ? "source-map" : "eval-source-map";
+  const devtool = webpackEnv.SOURCE_MAP ? "source-map" : "eval-source-map";
 
   return {
     mode,
