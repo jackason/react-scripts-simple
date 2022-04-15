@@ -1,3 +1,4 @@
+const { program } = require('commander');
 const webpackDevServer = require('webpack-dev-server');
 const webpack = require("webpack");
 const webpackConfig = require("../config/webpack.config.js");
@@ -14,6 +15,10 @@ const HOST = process.env.host || 'localhost';
 const HTTPS = process.env.HTTPS || false;
 const proxy = serverProxy()
 const appName = process.env.npm_package_name
+
+program.option('--env <type>', '').parse();
+const opts = program.opts()
+console.log(opts)
 
 console.log()
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const path = require("path")
+const { program } = require('commander');
 const { execSync } = require('child_process')
 
 /**
@@ -15,7 +16,7 @@ const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
 /**执行命令方法 */
 function executeCommand(cmd) {
-    let command = `node ${cmd}.js`
+    let command = `node ${cmd}.js ${process.argv.join(" ")}`
     execSync(command, { cwd: `${path.join(__dirname, `../scripts`)}`, stdio: 'inherit' })
 }
 
