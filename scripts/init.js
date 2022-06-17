@@ -40,7 +40,6 @@ module.exports = function (
             // 读取文件类型是否是目录
             let st = fs.statSync(_src);
             if (st.isFile()) {
-                console.log(_src, "_src")
                 let readable = fs.createReadStream(_src) // 创建读取流
                 let writable = fs.createWriteStream(_dst) // 创建写入流
                 readable.pipe(writable);
