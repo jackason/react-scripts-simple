@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-simple",
-  "version": "1.1.1",
+  "version": "1.0.11",
   "description": "Configuration and scripts for Create React App",
   "license": "MIT",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/jackason/react-scripts-simple.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "bugs": {
     "url": "https://github.com/jackason/react-scripts-simple/issues"
