@@ -2,6 +2,7 @@ const MiniCss = require("mini-css-extract-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { entry, output, appSrc, node_modules } = require("./paths");
 const plugins = require("./plugins");
+const path = require("path")
 
 module.exports = function (webpackEnv) {
   const devMode = webpackEnv.WEBPACK_SERVE;
@@ -20,6 +21,9 @@ module.exports = function (webpackEnv) {
     stats: "errors-only",
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+      alias: {
+        '@': path.join(appSrc),
+      },
     },
     target,
     module: {
