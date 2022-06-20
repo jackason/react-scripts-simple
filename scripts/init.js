@@ -29,38 +29,6 @@ module.exports = function (
         console.log()
     }
 
-    function copy(src, dst) {
-        //读取目录
-        let paths = fs.readdirSync(src);
-
-        paths.forEach(function (filePath) {
-            const _src = src + '/' + filePath
-            const _dst = dst + '/' + filePath
-
-            // 读取文件类型是否是目录
-            let st = fs.statSync(_src);
-            if (st.isFile()) {
-                console.log(_src, "_src")
-                let readable = fs.createReadStream(_src) // 创建读取流
-                let writable = fs.createWriteStream(_dst) // 创建写入流
-                readable.pipe(writable);
-            } else if (st.isDirectory()) {
-                exists(_src, _dst, copy)
-            }
-        });
-    }
-
-    function exists(src, dst, callback) {
-        //测试某个路径下文件是否存在
-        const exists = fs.existsSync(dst)
-        if (exists) {
-            callback(src, dst)
-        } else {
-            fs.mkdirSync(dst)
-            callback(src, dst)
-        }
-    }
-
     // 判断时候使用自定义模板
     if (templateName) {
         console.log(chalk.gray("自定义模板: " + templateName))
@@ -71,7 +39,7 @@ module.exports = function (
 
     // 生成文件模板
     console.log(chalk.gray("生成模板..."))
-    exists(templateSrc, appPath, copy)
+    fs.cpSync(templateSrc, appPath, { recursive: true })
     console.log(chalk.gray("生成模板完成"))
     console.log()
 
