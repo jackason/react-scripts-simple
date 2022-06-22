@@ -68,7 +68,14 @@ module.exports = function (webpackEnv) {
           test: /\.css$/i,
           use: [
             devMode ? "style-loader" : MiniCss.loader,
-            "css-loader",
+            {
+              loader: "css-loader",
+              options: {
+                modules: {
+                  localIdentName: "[local]_[hash:6]"
+                }
+              }
+            },
             "postcss-loader",
           ],
           include: appSrc,
